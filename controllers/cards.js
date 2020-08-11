@@ -1,0 +1,34 @@
+const Card = require('../models/card');
+
+module.exports.getCards = (req, res) => {
+  Card.find({})
+    .then((cards) => {
+      if (cards.length) {
+        res.send(cards);
+      } else {
+        res.status(400).send({ message: 'В базе данных еще нет ни одной фотографии' });
+      }
+    })
+    .catch((err) => res.status(500).send({ message: 'На сервере произошла ошибка' }));
+};
+
+module.exports.createCard = (req, res) => {
+  const owner = req.user._id;
+  const { name, link } = req.body;
+
+  Card.create({ name, link, owner })
+    .then((card) => res.send({ data: card }))
+    .catch((err) => res.status(500).send({ message: 'На сервере произошла ошибка' }));
+};
+
+module.exports.deleteCard = (req, res) => {
+  Card.findByIdAndDelete(req.params.cardId)
+    .then((card) => {
+      if (card) {
+        res.send({ data: card });
+      } else {
+        res.status(404).send({ message: 'Нет фотографии с таким id' });
+      }
+    })
+    .catch((err) => res.status(500).send({ message: 'На сервере произошла ошибка' }));
+};

@@ -1,0 +1,31 @@
+{
+  "name": "sprint-13-mesto-server-db",
+  "version": "0.0.1",
+  "description": "Connecting Mesto project to database",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "dev": "nodemon app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ustyuzhanina/sprint-13-mesto-server-db.git"
+  },
+  "author": "Elena Ustyuzhanina",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "express": "^4.17.1",
+    "mongoose": "^5.9.28"
+  },
+  "devDependencies": {
+    "eslint": "^7.6.0",
+    "eslint-config-airbnb-base": "^14.2.0",
+    "eslint-plugin-import": "^2.22.0",
+    "nodemon": "^2.0.4"
+  },
+  "bugs": {
+    "url": "https://github.com/ustyuzhanina/sprint-13-mesto-server-db/issues"
+  },
+  "homepage": "https://github.com/ustyuzhanina/sprint-13-mesto-server-db#readme"
+}
