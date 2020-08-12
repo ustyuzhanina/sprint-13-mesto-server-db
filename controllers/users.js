@@ -9,7 +9,7 @@ module.exports.getUsers = (req, res) => {
         res.status(400).send({ message: 'В базе данных еще нет ни одного пользователя' });
       }
     })
-    .catch((err) => res.status(500).send({ message: 'На сервере произошла ошибка' }));
+    .catch(() => res.status(500).send({ message: 'На сервере произошла ошибка' }));
 };
 
 module.exports.getUserById = (req, res) => {
@@ -21,7 +21,7 @@ module.exports.getUserById = (req, res) => {
         res.status(404).send({ message: 'Нет пользователя с таким id' });
       }
     })
-    .catch((err) => res.status(500).send({ message: 'На сервере произошла ошибка' }));
+    .catch(() => res.status(500).send({ message: 'На сервере произошла ошибка' }));
 };
 
 module.exports.createUser = (req, res) => {
@@ -29,5 +29,11 @@ module.exports.createUser = (req, res) => {
 
   User.create({ name, about, avatar })
     .then((user) => res.send({ data: user }))
-    .catch((err) => res.status(500).send({ message: 'На сервере произошла ошибка' }));
+    .catch((err) => {
+      if (err.name === 'ValidationError') {
+        res.status(400).send({ message: 'Ошибка валидации данных' });
+      } else {
+        res.status(500).send({ message: 'На сервере произошла ошибка' });
+      }
+    });
 };
