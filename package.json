@@ -1,6 +1,6 @@
 {
   "name": "sprint-13-mesto-server-db",
-  "version": "0.0.1",
+  "version": "0.1.1",
   "description": "Connecting Mesto project to database",
   "main": "app.js",
   "scripts": {

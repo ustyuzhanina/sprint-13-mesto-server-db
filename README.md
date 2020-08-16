@@ -1,6 +1,6 @@
 # **sprint-13-mesto-server-db**
 
-Version 0.1.0
+Version 0.1.1
 
 ## About project:
 This is a demo-project accomplished to learn basic principles of creating a REST API separate from frontend through the use of Node.js, Express routing and Mongo Database.
